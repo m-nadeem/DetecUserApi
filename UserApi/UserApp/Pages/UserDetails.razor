@@ -1,0 +1,39 @@
+﻿<!-- Pages/UserDetails.razor -->
+@page "/userdetails/{Id:int}"
+@inject UserApi.UserApp.Services.UserService UserService
+@inject NavigationManager Navigation
+
+<h3>User Details</h3>
+
+<div class="container">
+    @if (user != null)
+    {
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">@user.Name</h5>
+                <p class="card-text"><strong>Email:</strong> @user.Email</p>
+                <p class="card-text"><strong>Address:</strong> @user.Address</p>
+                <button class="btn btn-primary" @onclick="GoBack">Back</button>
+            </div>
+        </div>
+    }
+    else
+    {
+        <p>Loading...</p>
+    }
+</div>
+
+@code {
+    [Parameter] public int Id { get; set; }
+    private UserApi.Models.User user;
+
+    protected override async Task OnParametersSetAsync()
+    {
+        user = await UserService.GetUserByIdAsync(Id);
+    }
+
+    private void GoBack()
+    {
+        Navigation.NavigateTo("/users");
+    }
+}

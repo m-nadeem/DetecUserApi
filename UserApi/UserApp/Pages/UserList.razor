@@ -1,0 +1,24 @@
+﻿<!-- Pages/UserList.razor -->
+@page "/users"
+@inject UserApi.UserApp.Services.UserService UserService
+
+<h3>User List</h3>
+<div class="container">
+    <ul class="list-group">
+        @foreach (var user in users)
+        {
+            <li class="list-group-item">
+                <a href="/userdetails/@user.Id">@user.Name</a>
+            </li>
+        }
+    </ul>
+</div>
+
+@code {
+    private IEnumerable<UserApi.Models.User> users;
+
+    protected override async Task OnInitializedAsync()
+    {
+        users = await UserService.GetUsersAsync();
+    }
+}

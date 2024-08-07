@@ -1,0 +1,13 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/UserApi/.vs
+/UserApi/bin/Debug/net8.0/UserApp/Shared/obj
+/UserApi/bin/Debug/net8.0/UserApp/obj
+/UserApi/bin/Debug/net8.0
+/UserApi/obj
+/UserApi/UserApp/obj
+/UserApi/UserApp/Shared/obj
+/UserApi.Models/obj
+/UserApi.Models/bin/Debug/net8.0
